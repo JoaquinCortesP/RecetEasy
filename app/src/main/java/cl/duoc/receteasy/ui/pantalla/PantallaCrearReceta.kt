@@ -253,6 +253,6 @@ fun PantallaCrearReceta(navController: NavController, viewModel: RecetarioViewMo
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = err, color = MaterialTheme.colorScheme.error)
         }
-    }//test de github**
+    }//test de github******
 }
 
