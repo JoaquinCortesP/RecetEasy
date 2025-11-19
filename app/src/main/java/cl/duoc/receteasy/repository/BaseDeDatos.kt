@@ -8,7 +8,11 @@ import androidx.room.TypeConverters
 import cl.duoc.receteasy.model.Receta
 import cl.duoc.receteasy.model.Usuario
 
-@Database(entities = [Receta::class, Usuario::class], version = 2, exportSchema = false)
+@Database(
+    entities = [Receta::class, Usuario::class],
+    version = 3,             // subimos versión por cambio de tipo
+    exportSchema = false
+)
 @TypeConverters(Converters::class)
 abstract class BaseDeDatos : RoomDatabase() {
     abstract fun recetaDao(): RecetaDao
@@ -29,8 +33,9 @@ abstract class BaseDeDatos : RoomDatabase() {
                 BaseDeDatos::class.java,
                 "recetario.db"
             )
-                .fallbackToDestructiveMigration() // Esto borra la BD antigua y crea las tablas nuevas
+                .fallbackToDestructiveMigration()
                 .build()
     }
 }
+
 

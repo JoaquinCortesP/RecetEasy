@@ -3,19 +3,20 @@ package cl.duoc.receteasy.repository
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import cl.duoc.receteasy.model.Ingrediente
 
 class Converters {
     private val gson = Gson()
 
     @TypeConverter
-    fun listaAJson(list: List<String>?): String? {
+    fun listaIngredientesAJson(list: List<Ingrediente>?): String? {
         return list?.let { gson.toJson(it) }
     }
 
     @TypeConverter
-    fun jsonALista(value: String?): List<String>? {
-        if (value.isNullOrEmpty()) return emptyList()
-        val type = object : TypeToken<List<String>>() {}.type
+    fun jsonAListaIngredientes(value: String?): List<Ingrediente> {
+        if (value.isNullOrBlank()) return emptyList()
+        val type = object : TypeToken<List<Ingrediente>>() {}.type
         return gson.fromJson(value, type)
     }
 }

@@ -3,6 +3,7 @@ package cl.duoc.receteasy.repository
 import androidx.room.*
 import cl.duoc.receteasy.model.Receta
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Dao
 interface RecetaDao {
@@ -19,7 +20,21 @@ interface RecetaDao {
     @Delete
     suspend fun eliminar(receta: Receta)
 
-    @Query("SELECT * FROM recetas WHERE titulo LIKE '%' || :q || '%' OR ingredientes LIKE '%' || :q || '%' ORDER BY creadaEn DESC")
-    fun buscar(q: String): Flow<List<Receta>>
+
+    fun buscar(query: String): Flow<List<Receta>> = obtenerTodas().map { recetas ->
+        val buscados = query.split(",")
+            .map { it.trim().lowercase() }
+            .filter { it.isNotBlank() }
+
+        recetas.filter { receta ->
+            buscados.all { busq ->
+                receta.ingredientes.any { ing ->
+                    ing.nombre.lowercase().contains(busq)
+                }
+            }
+        }
+    }
+
+
 }
 

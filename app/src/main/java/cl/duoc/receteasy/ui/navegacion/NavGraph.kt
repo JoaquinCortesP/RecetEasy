@@ -1,3 +1,4 @@
+// app/src/main/java/cl/duoc/receteasy/ui/navegacion/NavGraph.kt
 package cl.duoc.receteasy.ui.navegacion
 
 import androidx.compose.runtime.Composable
@@ -11,12 +12,16 @@ import cl.duoc.receteasy.viewmodel.RecetarioViewModel
 import cl.duoc.receteasy.viewmodel.UsuarioViewModel
 
 @Composable
-fun NavGraph(recetarioViewModel: RecetarioViewModel, usuarioViewModel: UsuarioViewModel) {
+fun NavGraph(
+    recetarioViewModel: RecetarioViewModel,
+    usuarioViewModel: UsuarioViewModel,
+    startDestination: String = Rutas.BIENVENIDA
+) {
     val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = Rutas.BIENVENIDA
+        startDestination = startDestination
     ) {
         composable(Rutas.BIENVENIDA) {
             PantallaBienvenida(navController)
@@ -28,7 +33,11 @@ fun NavGraph(recetarioViewModel: RecetarioViewModel, usuarioViewModel: UsuarioVi
             PantallaLogin(navController, usuarioViewModel)
         }
         composable(Rutas.INICIO) {
-            PantallaInicio(navController, recetarioViewModel)
+            PantallaInicio(
+                navController = navController,
+                usuarioViewModel = usuarioViewModel,
+                recetarioViewModel = recetarioViewModel
+            )
         }
         composable(Rutas.CREAR) {
             PantallaCrearReceta(navController, recetarioViewModel)
@@ -42,7 +51,6 @@ fun NavGraph(recetarioViewModel: RecetarioViewModel, usuarioViewModel: UsuarioVi
         }
         composable(Rutas.CAMARA) {
             PantallaCamara(navController = navController) { uri ->
-                // Guardar Uri en la pantalla anterior y regresar
                 navController.previousBackStackEntry?.savedStateHandle?.set("fotoUri", uri)
                 navController.popBackStack()
             }

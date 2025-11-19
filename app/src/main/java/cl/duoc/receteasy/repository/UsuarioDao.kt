@@ -20,4 +20,7 @@ interface UsuarioDao {
 
     @Query("SELECT * FROM usuarios")
     suspend fun obtenerTodos(): List<Usuario>
+
+    @Query("SELECT COUNT(*) FROM usuarios WHERE nombre = :nombre OR correo = :correo")
+    suspend fun existeUsuario(nombre: String, correo: String): Int
 }

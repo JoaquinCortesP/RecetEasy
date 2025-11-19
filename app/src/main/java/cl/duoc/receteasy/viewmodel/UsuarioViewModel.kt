@@ -6,12 +6,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import cl.duoc.receteasy.model.Usuario
 import cl.duoc.receteasy.repository.BaseDeDatos
+import cl.duoc.receteasy.session.SessionManager
 import kotlinx.coroutines.launch
 
 class UsuarioViewModel(application: Application) : AndroidViewModel(application) {
 
     private val db = BaseDeDatos.obtenerInstancia(application)
     private val usuarioDao = db.usuarioDao()
+
+    private val session = SessionManager(application)
 
     // Registrar usuario
     fun registrarUsuario(nombre: String, contrasena: String, fotoUri: Uri?, callback: (Boolean, String) -> Unit) {
@@ -41,8 +44,27 @@ class UsuarioViewModel(application: Application) : AndroidViewModel(application)
             if (usuario == null) {
                 callback(false, "Usuario o contraseña incorrectos")
             } else {
+                // Guarda sesión persistente
+                session.guardarSesion(usuario.nombre, usuario.fotoUri)
                 callback(true, "Bienvenido ${usuario.nombre}")
             }
         }
+    }
+
+    // Obtener usuario logueado actualmente
+    fun obtenerUsuarioLogueado(): Usuario? {
+        val nombre = session.obtenerUsuario() ?: return null
+        val foto = session.obtenerFoto()
+
+        return Usuario(
+            nombre = nombre,
+            contrasena = "",
+            correo = "",
+            fotoUri = foto
+        )
+    }
+
+    fun cerrarSesion() {
+        session.cerrarSesion()
     }
 }

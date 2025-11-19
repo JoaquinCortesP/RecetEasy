@@ -9,6 +9,6 @@ data class Usuario(
     val nombre: String,
     val contrasena: String,
     val correo: String,
-    val fotoUri: String? = null // 🔹 nueva columna para la foto
+    val fotoUri: String? = "default_user.png"
 )
 

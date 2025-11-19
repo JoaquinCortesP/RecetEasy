@@ -9,11 +9,9 @@ data class Receta(
     val id: Long = 0,
     val titulo: String,
     val descripcion: String,
-    val ingredientes: String,
+    val ingredientes: List<Ingrediente>,
     val pasos: String,
-    val imagenUri: String? = null,
+    val imagenUri: String? = "default_receta.png",
     val creador: String? = null,
     val creadaEn: Long = System.currentTimeMillis()
 )
-
-

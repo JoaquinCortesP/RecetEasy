@@ -1,4 +1,3 @@
-
 package cl.duoc.receteasy.ui.pantalla
 
 import android.Manifest
@@ -29,6 +28,7 @@ fun PantallaRegistro(navController: NavController, usuarioViewModel: UsuarioView
     var mensaje by remember { mutableStateOf("") }
     var fotoUri by remember { mutableStateOf<Uri?>(null) }
     var bitmap by remember { mutableStateOf<Bitmap?>(null) }
+    var acceptTerms by remember { mutableStateOf(false) }
 
     fun crearArchivoTemporal(): File {
         val file = File.createTempFile("usuario_foto_", ".jpg", context.cacheDir)
@@ -85,7 +85,11 @@ fun PantallaRegistro(navController: NavController, usuarioViewModel: UsuarioView
         Spacer(modifier = Modifier.height(20.dp))
 
         if (bitmap != null) {
-            Image(bitmap = bitmap!!.asImageBitmap(), contentDescription = "Foto usuario", modifier = Modifier.size(150.dp))
+            Image(
+                bitmap = bitmap!!.asImageBitmap(),
+                contentDescription = "Foto usuario",
+                modifier = Modifier.size(150.dp)
+            )
             Spacer(modifier = Modifier.height(8.dp))
         }
 
@@ -95,8 +99,23 @@ fun PantallaRegistro(navController: NavController, usuarioViewModel: UsuarioView
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Checkbox(
+                checked = acceptTerms,
+                onCheckedChange = { acceptTerms = it }
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Acepto términos y condiciones")
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
         Button(
             onClick = {
+                if (!acceptTerms) {
+                    mensaje = "Debes aceptar los términos y condiciones"
+                    return@Button
+                }
                 if (fotoUri == null) {
                     mensaje = "Debes tomar una foto antes de registrarte"
                 } else {
@@ -121,3 +140,4 @@ fun PantallaRegistro(navController: NavController, usuarioViewModel: UsuarioView
         Text(text = mensaje, color = MaterialTheme.colorScheme.primary)
     }
 }
+

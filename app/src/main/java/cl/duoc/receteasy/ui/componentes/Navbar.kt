@@ -25,5 +25,6 @@ fun Navbar(navController: NavController) {
             label = { Text("Crear") },
             icon = { Icon(Icons.Default.Add, contentDescription = "Crear") }
         )
+
     }
 }

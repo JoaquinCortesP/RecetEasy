@@ -9,6 +9,7 @@ class RecetaRepository(private val dao: RecetaDao) {
 
     fun buscar(query: String): Flow<List<Receta>> = dao.buscar(query)
 
+
     suspend fun buscarPorId(id: Long): Receta? = dao.buscarPorId(id)
 
     suspend fun insertar(receta: Receta): Long = dao.insertar(receta)

@@ -2,15 +2,19 @@ package cl.duoc.receteasy.ui.pantalla
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import cl.duoc.receteasy.R
 import cl.duoc.receteasy.model.Receta
 import cl.duoc.receteasy.viewmodel.RecetarioViewModel
 
@@ -43,7 +47,6 @@ fun PantallaDetalleReceta(
         }
     ) { padding ->
         if (receta == null) {
-            // Mientras se carga la receta
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -52,39 +55,56 @@ fun PantallaDetalleReceta(
             ) {
                 CircularProgressIndicator()
             }
-        } else {
-            // Mostrar el contenido de la receta
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .padding(16.dp)
-            ) {
-                receta?.imagenUri?.let {
-                    Image(
-                        painter = rememberAsyncImagePainter(it),
-                        contentDescription = "Imagen receta",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(200.dp)
-                    )
-                    Spacer(modifier = Modifier.height(12.dp))
+            return@Scaffold
+        }
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .systemBarsPadding()
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
+            val painter =
+                if (receta!!.imagenUri.isNullOrBlank() || receta!!.imagenUri == "default_receta.png") {
+                    painterResource(R.drawable.default_receta)
+                } else {
+                    rememberAsyncImagePainter(receta!!.imagenUri)
                 }
 
-                Text(
-                    text = receta?.titulo ?: "",
-                    style = MaterialTheme.typography.headlineSmall
-                )
-                Spacer(modifier = Modifier.height(8.dp))
+            Image(
+                painter = painter,
+                contentDescription = "Imagen receta",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(220.dp)
+            )
 
-                Text("Ingredientes", style = MaterialTheme.typography.titleMedium)
-                Text(text = receta?.ingredientes ?: "Sin ingredientes")
-                Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
-                Text("Preparación", style = MaterialTheme.typography.titleMedium)
-                Text(text = receta?.pasos ?: "Sin pasos")
-            }
+            Text(
+                text = receta!!.titulo,
+                style = MaterialTheme.typography.headlineSmall
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Text("Ingredientes", style = MaterialTheme.typography.titleMedium)
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Text(
+                text = receta!!.ingredientes.joinToString("\n") { ing ->
+                    "- ${ing.nombre} ${ing.cantidad} ${ing.unidad}"
+                }
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text("Preparación", style = MaterialTheme.typography.titleMedium)
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Text(text = receta!!.pasos)
         }
     }
 }
-
