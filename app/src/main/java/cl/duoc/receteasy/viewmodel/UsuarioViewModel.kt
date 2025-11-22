@@ -4,7 +4,7 @@ import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import cl.duoc.receteasy.model.Usuario
+import cl.duoc.receteasy.data.model.Usuario
 import cl.duoc.receteasy.repository.BaseDeDatos
 import cl.duoc.receteasy.session.SessionManager
 import kotlinx.coroutines.launch

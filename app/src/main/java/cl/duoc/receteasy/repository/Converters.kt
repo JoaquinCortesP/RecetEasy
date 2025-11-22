@@ -3,7 +3,7 @@ package cl.duoc.receteasy.repository
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import cl.duoc.receteasy.model.Ingrediente
+import cl.duoc.receteasy.data.model.Ingrediente
 
 class Converters {
     private val gson = Gson()

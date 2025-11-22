@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import cl.duoc.receteasy.model.Receta
-import cl.duoc.receteasy.model.Usuario
+import cl.duoc.receteasy.data.model.Receta
+import cl.duoc.receteasy.data.model.Usuario
 
 @Database(
     entities = [Receta::class, Usuario::class],

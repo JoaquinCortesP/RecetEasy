@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import cl.duoc.receteasy.model.Usuario
+import cl.duoc.receteasy.data.model.Usuario
 
 @Dao
 interface UsuarioDao {

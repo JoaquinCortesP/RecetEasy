@@ -59,27 +59,25 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.navigation.compose)
-    implementation("io.coil-kt:coil-compose:2.4.0")
-
-    // Room
-    implementation("androidx.room:room-runtime:2.6.0")
-    implementation(libs.ads.mobile.sdk)
     implementation(libs.androidx.compose.foundation)
-    kapt("androidx.room:room-compiler:2.6.0")
-    implementation("androidx.room:room-ktx:2.6.0")
 
-    // Coil (para cargar imágenes desde Uri)
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    // Coroutines (para Room y ViewModel)
+    implementation("androidx.room:room-runtime:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
+    kapt("androidx.room:room-compiler:2.6.0")
+
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    // Firebase Crashlytics
     implementation(libs.firebase.crashlytics.buildtools)
 
-    // Gson
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.ads.mobile.sdk)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.gson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -4,8 +4,8 @@ import android.net.Uri
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cl.duoc.receteasy.model.Ingrediente
-import cl.duoc.receteasy.model.Receta
+import cl.duoc.receteasy.data.model.Ingrediente
+import cl.duoc.receteasy.data.model.Receta
 import cl.duoc.receteasy.repository.RecetaRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,4 +1,4 @@
-package cl.duoc.receteasy.model
+package cl.duoc.receteasy.data.model
 
 data class Ingrediente(
     val nombre: String,

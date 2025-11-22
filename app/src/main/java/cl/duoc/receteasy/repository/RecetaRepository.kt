@@ -1,6 +1,6 @@
 package cl.duoc.receteasy.repository
 
-import cl.duoc.receteasy.model.Receta
+import cl.duoc.receteasy.data.model.Receta
 import kotlinx.coroutines.flow.Flow
 
 class RecetaRepository(private val dao: RecetaDao) {

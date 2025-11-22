@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import cl.duoc.receteasy.R
-import cl.duoc.receteasy.model.Receta
+import cl.duoc.receteasy.data.model.Receta
 import cl.duoc.receteasy.viewmodel.RecetarioViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
