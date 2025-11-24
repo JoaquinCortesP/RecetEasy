@@ -1,4 +1,3 @@
-
 package cl.duoc.receteasy.ui.pantalla
 
 import androidx.compose.foundation.layout.*

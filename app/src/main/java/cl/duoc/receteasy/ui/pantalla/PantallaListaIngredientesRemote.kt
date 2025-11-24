@@ -104,6 +104,7 @@ fun PantallaListaIngredientesRemotos(
                                             text = ingrediente.nombre,
                                             style = MaterialTheme.typography.titleMedium
                                         )
+
                                     }
                                 }
                             }

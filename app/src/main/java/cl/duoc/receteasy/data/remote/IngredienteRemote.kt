@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class IngredienteRemote(
     val id: Int,
-    @SerializedName("nombre")
+    @SerializedName("name")
     val nombre: String,
     @SerializedName("created_at")
-    val createdAt: String
+    val createdAt: Long
 )

@@ -30,11 +30,14 @@ interface RecetaDao {
         recetas.filter { receta ->
             buscados.all { busq ->
                 receta.ingredientes.any { ing ->
-                    ing.nombre.lowercase().contains(busq)
+                    (ing.nombre ?: "")
+                        .lowercase()
+                        .contains(busq)
                 }
             }
         }
     }
+
 
 
 }

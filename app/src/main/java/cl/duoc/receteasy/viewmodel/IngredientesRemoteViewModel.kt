@@ -21,7 +21,7 @@ class IngredientesRemoteViewModel : ViewModel() {
         private set
 
     init {
-        // Cargar automáticamente al entrar a la pantalla
+        // Carga inicial
         cargarIngredientes()
     }
 

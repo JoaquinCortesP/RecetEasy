@@ -153,10 +153,15 @@ fun FilaReceta(receta: Receta, onClick: () -> Unit) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 Text(text = receta.titulo, style = MaterialTheme.typography.titleMedium)
                 Spacer(modifier = Modifier.height(4.dp))
+
                 val ingredientesText = receta.ingredientes
                     .joinToString(separator = ", ") { ing ->
-                        "${ing.nombre} ${ing.cantidad}${if (ing.unidad.isNotBlank()) " ${ing.unidad}" else ""}"
+                        val unidad = ing.unidad?.takeIf { it.isNotBlank() } ?: ""
+                        val nombre = ing.nombre ?: ""
+                        val cantidad = ing.cantidad ?: ""
+                        "$nombre $cantidad${if (unidad.isNotEmpty()) " $unidad" else ""}"
                     }
+
                 Text(
                     text = ingredientesText.ifBlank { "Sin ingredientes" },
                     maxLines = 2,
