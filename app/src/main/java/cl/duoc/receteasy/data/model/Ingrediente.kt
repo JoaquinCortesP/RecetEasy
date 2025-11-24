@@ -1,7 +1,9 @@
 package cl.duoc.receteasy.data.model
 
 data class Ingrediente(
-    val nombre: String,
-    val cantidad: Double,
-    val unidad: String
+    val id: Long? = null,
+    val nombre: String? = null,
+    val unidad: String? = null,
+    val cantidad: String? = null
 )
+
