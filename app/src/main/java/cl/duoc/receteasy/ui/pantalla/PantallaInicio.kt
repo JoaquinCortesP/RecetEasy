@@ -86,6 +86,15 @@ fun PantallaInicio(
                 Text("Cerrar sesión")
             }
 
+            Button(
+                onClick = { navController.navigate(Rutas.INGREDIENTES_XANO) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp)
+            ) {
+                Text("Ver ingredientes desde Xano")
+            }
+
             OutlinedTextField(
                 value = consulta,
                 onValueChange = {

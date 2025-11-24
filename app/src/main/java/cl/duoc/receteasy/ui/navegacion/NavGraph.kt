@@ -1,4 +1,3 @@
-// app/src/main/java/cl/duoc/receteasy/ui/navegacion/NavGraph.kt
 package cl.duoc.receteasy.ui.navegacion
 
 import androidx.compose.runtime.Composable
@@ -37,6 +36,7 @@ fun NavGraph(
                 navController = navController,
                 usuarioViewModel = usuarioViewModel,
                 recetarioViewModel = recetarioViewModel
+
             )
         }
         composable(Rutas.CREAR) {
@@ -54,6 +54,9 @@ fun NavGraph(
                 navController.previousBackStackEntry?.savedStateHandle?.set("fotoUri", uri)
                 navController.popBackStack()
             }
+        }
+        composable(Rutas.INGREDIENTES_XANO) {
+            PantallaListaIngredientesRemotos(navController = navController)
         }
     }
 }

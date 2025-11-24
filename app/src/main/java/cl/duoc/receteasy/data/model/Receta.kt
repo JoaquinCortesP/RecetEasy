@@ -1,6 +1,7 @@
 package cl.duoc.receteasy.data.model
 
 import androidx.room.Entity
+import cl.duoc.receteasy.data.model.Ingrediente
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "recetas")

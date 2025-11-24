@@ -1,4 +1,3 @@
-// app/src/main/java/cl/duoc/receteasy/MainActivity.kt
 package cl.duoc.receteasy
 
 import android.os.Bundle
@@ -48,10 +47,7 @@ class MainActivity : ComponentActivity() {
             Rutas.BIENVENIDA
         }
 
-        // Consumir el botón físico atrás (evitar volver al login)
         onBackPressedDispatcher.addCallback(this) {
-            // No-op: consumimos el evento para que la app no navegue atrás automáticamente.
-            // Si quieres permitir salir de la app con el botón atrás, reemplaza el cuerpo por: isEnabled = false; activity?.finish()
         }
 
         setContent {

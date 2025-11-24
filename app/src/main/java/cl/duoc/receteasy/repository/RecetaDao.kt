@@ -1,6 +1,7 @@
 package cl.duoc.receteasy.repository
 
 import androidx.room.*
+import cl.duoc.receteasy.data.model.Ingrediente
 import cl.duoc.receteasy.data.model.Receta
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

@@ -169,7 +169,7 @@ fun PantallaCrearReceta(navController: NavController, viewModel: RecetarioViewMo
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        //  Campo de pasos obligatorio con error visual
+
         OutlinedTextField(
             value = pasos,
             onValueChange = {
@@ -220,7 +220,7 @@ fun PantallaCrearReceta(navController: NavController, viewModel: RecetarioViewMo
             onClick = {
                 viewModel.limpiarError()
 
-                //Validación: pasos obligatorio
+
                 if (pasos.isBlank()) {
                     pasosError = true
                     viewModel.setError("Debes ingresar los pasos de la receta")
@@ -253,6 +253,6 @@ fun PantallaCrearReceta(navController: NavController, viewModel: RecetarioViewMo
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = err, color = MaterialTheme.colorScheme.error)
         }
-    }//test de github******
+    }
 }
 
