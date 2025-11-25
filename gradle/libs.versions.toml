@@ -12,11 +12,10 @@ navigationCompose = "2.9.5"
 firebaseCrashlyticsBuildtools = "3.0.6"
 adsMobileSdk = "0.21.0-beta01"
 foundation = "1.9.4"
-
-# Retrofit / OkHttp / Gson
 retrofit = "2.11.0"
 okhttp = "4.12.0"
 gson = "2.10.1"
+mockk = "1.14.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,11 +43,11 @@ ads-mobile-sdk = { group = "com.google.android.libraries.ads.mobile.sdk", name =
 
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
 
-# Retrofit / OkHttp / Gson
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
